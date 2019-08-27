@@ -10,25 +10,24 @@ public class Practice01Test {
 	protected String [] types;
 
 
-	/*
-	 * Constructor for the class.
-	 */
+	/*Constructor for the class.*/
 	public Practice01Test () {
-		types = new String [] {"recursive", "iterative"};
+		types = new String[] {"recursive", "iterative"};
 	}
 
 
-	/*
-	 * This function tests three sample values of the factorial function.
-	 */
+	/*This function tests three sample values of the factorial function.*/
 	public boolean testPositiveFactorial(Practice01Math math) {
 		int[][] expectedValues = {{1, 1}, {4, 24}, {10, 3628800}};
 		
 		for (int i = 0; i < expectedValues.length; i++) {
 			try {
-				if (math.fact(expectedValues[i][0]) != expectedValues[i][1])
+				if (math.fact(expectedValues[i][0]) != expectedValues[i][1]) {
+					System.out.println(math.fact(expectedValues[i][0]) + "fact compare" + expectedValues[i][1]);
 					return false;
-			} catch (Exception e) {
+				}
+			}
+			catch (Exception e) {
 				return false;
 			}
 		}
@@ -36,9 +35,7 @@ public class Practice01Test {
 	}
 
 
-	/*
-	 * This function tests one negative case of the factorial function (expected to fail).
-	 */
+	/*This function tests one negative case of the factorial function (expected to fail).*/
 	public boolean testNegativeFactorial(Practice01Math math) {
 		try {
 			math.fact(-1);
@@ -50,16 +47,16 @@ public class Practice01Test {
 	}
 
 
-	/*
-	 * This function tests four sample values of the Fibonacci function.
-	 */
+	/*This function tests four sample values of the Fibonacci function.*/
 	public boolean testPositiveFibonacci(Practice01Math math) {
 		int[][] expectedValues = {{0, 0}, {1, 1}, {4, 3}, {10, 55}};
 		
 		for (int i = 0; i < expectedValues.length; i++) {
 			try {
-				if (math.fib(expectedValues[i][0]) != expectedValues[i][1])
+				if (math.fib(expectedValues[i][0]) != expectedValues[i][1]) {
+					System.out.println(math.fib(expectedValues[i][0]) + "fib compare" + expectedValues[i][1]);
 					return false;
+				}
 			} catch (Exception e) {
 				return false;
 			}
@@ -68,9 +65,7 @@ public class Practice01Test {
 	}
 
 
-	/*
-	 * This function tests one negative case of the Fibonacci function (expected to fail).
-	 */
+	/*This function tests one negative case of the Fibonacci function (expected to fail).*/
 	public boolean testNegativeFibonacci(Practice01Math math) {
 		try {
 			math.fact(-1);
@@ -82,9 +77,7 @@ public class Practice01Test {
 	}
 
 
-	/*
-	 * This function tests the general correctness of the functions we care about.
-	 */
+	/*This function tests the general correctness of the functions we care about.*/
 	public void testCorrectness() {
 		int grade = 0;
 		System.out.println("Testing correctness.");
@@ -96,31 +89,31 @@ public class Practice01Test {
 				Practice01Math math = factory.get(implementationType);
 				
 				if (testPositiveFactorial(math)) {
-					System.out.println("[+20%] Correct calculations of factorial function.");
+					System.out.println("[+20%]P1 Correct calculations of factorial function.");
 					grade += 20;
 				} else {
-					System.out.println("[    ] Incorrect implementation of factorial function.");
+					System.out.println("[    ]P1 Incorrect implementation of factorial function.");
 				}
 				
 				if (testNegativeFactorial(math)) {
-					System.out.println("[+ 5%] Correct calculations of factorial function.");
+					System.out.println("[+ 5%]N1 Correct calculations of factorial function.");
 					grade += 5;
 				} else {
-					System.out.println("[    ] Incorrect implementation of factorial function.");
+					System.out.println("[    ]N1 Incorrect implementation of factorial function.");
 				}
 
 				if (testPositiveFibonacci(math)) {
-					System.out.println("[+20%] Correct calculations of Fibonacci function.");
+					System.out.println("[+20%]P2 Correct calculations of Fibonacci function.");
 					grade += 20;
 				} else {
-					System.out.println("[    ] Incorrect implementation of Fibonacci function.");
+					System.out.println("[    ]P2 Incorrect implementation of Fibonacci function.");
 				}
 				
 				if (testNegativeFibonacci(math)) {
-					System.out.println("[+ 5%] Correct calculations of Fibonacci function.");
+					System.out.println("[+ 5%]N2 Correct calculations of Fibonacci function.");
 					grade += 5;
 				} else {
-					System.out.println("[    ] Incorrect implementation of Fibonacci function.");
+					System.out.println("[    ]N2 Incorrect implementation of Fibonacci function.");
 				}
 			}
 		} catch (Exception e) {
@@ -141,10 +134,6 @@ public class Practice01Test {
 		System.out.println("Advanced: implement the speed test.");
 	}
 
-	
-	/*
-	 * Main...
-	 */
 	public static void main(String[] args) {
 		Practice01Test test = new Practice01Test();
 		test.testCorrectness();
